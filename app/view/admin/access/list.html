@@ -1,0 +1,164 @@
+<%- include ../public/_meta.html %>
+<%- include ../public/_menu.html %>
+
+<section class="Hui-admin-article-wrapper">
+	<%- include ../public/_header.html %>
+	<div class="Hui-admin-article">
+		<nav class="breadcrumb" style="background-color:#fff;padding: 0 24px">
+			首页
+			<span class="c-gray en">/</span>
+			权限管理
+			<span class="c-gray en">/</span>
+			权限列表
+		</nav>
+
+		<article class="Hui-admin-content clearfix">
+			<div class="panel mt-20">
+				<div class="panel-body">
+					<div class="clearfix">
+						<span class="f-l">
+							<a href="javascript:;" onclick="admin_permission_add('添加权限','/admin/access/add')" class="btn btn-primary radius"><i
+								 class="Hui-iconfont">&#xe600;</i>
+								添加权限</a>
+						</span>
+						
+							
+					</div>
+					<div class="mt-20 clearfix">
+						<table class="table table-border table-bordered table-hover table-bg table-sort">
+							<thead>
+								<tr>
+									<th scope="col" colspan="9">权限列表</th>
+								</tr>
+								<tr class="text-c">
+
+									<th width="250">模块名称</th>
+									<th width="80">节点类型</th>
+				
+									<th>操作地址</th>
+									<th>操作名称</th>
+									<th>排序</th>
+									<th>描述</th>
+									<th width="155">操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<%for(var i=0; i<list.length;i++){%>
+								<tr class="text-c">
+
+									<td>
+											<span style="color:red"><%=list[i].module_name%></span>
+									</td>
+									<td>
+										<%if(list[i].type==1){%>
+										模块
+										<%}else if(list[i].type==2){%>
+										菜单
+										<%}else{%>
+										操作
+										<%}%>
+									</td>
+					
+									<td class="text-c">
+										<%=list[i].action_name%>
+									</td>
+									<td class="text-c">
+										<%=list[i].url%>
+									</td>
+									<td class="text-c">
+										<%=list[i].sort%>
+									</td>
+									<td class="text-c">
+										<%=list[i].description%>
+									</td>
+									<td class="text-l f-14"><a title="编辑" class="btn btn-primary radius" href="javascript:;" onclick="admin_permission_edit('权限编辑','/admin/access/edit?id=<%=list[i]._id%>','1')"
+										 style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i> 编辑</a>
+										</td>
+								</tr>
+
+
+								<%for(var j=0; j<list[i].items.length; j++){%>
+								<tr class="text-c">
+									<td>
+										
+										<span style="padding-left:30px;">├&nbsp;<%=list[i].items[j].module_name%></span>
+									</td>
+									<td>
+										<%if(list[i].items[j].type==1){%>
+										模块
+										<%}else if(list[i].items[j].type==2){%>
+										菜单
+										<%}else{%>
+										操作
+										<%}%>
+									</td>
+				
+									<td class="text-c">
+										<%=list[i].items[j].url%>
+									</td>
+									<td class="text-c">
+										<%=list[i].items[j].action_name%>
+									</td>
+									<td class="text-c">
+										<%=list[i].items[j].sort%>
+									</td>
+									<td class="text-c">
+										<%=list[i].items[j].description%>
+									</td>
+
+									<td class="f-14 text-l"><a title="编辑" class="btn btn-primary radius" href="javascript:;" onclick="admin_permission_edit('权限编辑','/admin/access/edit?id=<%=list[i].items[j]._id%>','1')"
+										 style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i> 编辑</a>
+										<a title="删除" href="javascript:;" onclick="admin_permission_del(this,'<%=list[i].items[j]._id%>','Access')" class="btn btn-danger radius ml-5"
+										 style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i> 删除</a></td>
+								</tr>
+								<%}%>
+
+
+
+								<%}%>
+
+
+
+
+
+								<!-- <tr class="text-c">
+									<td><input type="checkbox" name="" value=""></td>
+									<td>2</td>
+									<td>2</td>
+									<td class="text-l">&nbsp;&nbsp;├&nbsp;二级栏目</td>
+									<td class="f-14"><a title="编辑" href="javascript:;" onclick="system_category_edit('栏目编辑','system-category-add.html','2','700','480')"
+										 style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
+										 onclick="article_category_del(this,'2')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+								</tr>
+								<tr class="text-c">
+									<td><input type="checkbox" name="" value=""></td>
+									<td>3</td>
+									<td>3</td>
+									<td class="text-l">&nbsp;&nbsp;├&nbsp;二级栏目</td>
+									<td class="f-14"><a title="编辑" href="javascript:;" onclick="system_category_edit('栏目编辑','system-category-add.html','3','700','480')"
+										 style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;"
+										 onclick="system-category_del(this,'3')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+								</tr> -->
+							</tbody>
+						</table>
+						</table>
+					</div>
+				</div>
+			</div>
+		</article>
+	</div>
+</section>
+
+</div>
+
+<%- include ../public/_footer.html %>
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="/public/admin/lib/datatables/1.10.15/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/public/admin/lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript" src="/public/admin/static/business/js/main.js"></script>
+
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+
+</html>

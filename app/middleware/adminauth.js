@@ -1,0 +1,30 @@
+/*
+ * @Author: Weisen
+ * @Date: 2019-09-29 09:49:12
+ * @Github: https://github.com/weisen0304
+ */
+'use strict';
+const url = require('url');
+
+module.exports = (options, app) => {
+  // 自定义中间件adminauth
+  return async function adminauth(ctx, next) {
+    // post提交设置全局csrf
+    ctx.state.csrf = ctx.csrf;
+    if (ctx.session.userinfo) {
+      ctx.state.userinfo = ctx.session.userinfo; // 全局变量
+      await next();
+    } else {
+      const pathName = url.parse(ctx.request.url).pathname;
+      if (
+        pathName === '/admin/login' ||
+        pathName === '/admin/dologin' ||
+        pathName === '/admin/verify'
+      ) {
+        await next();
+      } else {
+        ctx.redirect('/admin/login');
+      }
+    }
+  };
+};
