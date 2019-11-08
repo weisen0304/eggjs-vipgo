@@ -18,7 +18,7 @@ class LoginController extends BaseController {
     const username = requestBody.username;
     const password = await this.ctx.service.tools.md5(requestBody.password);
     const verity = requestBody.verity;
-    if (verity.toUpperCase() == this.ctx.session.verifycode.toUpperCase()) {
+    if (verity.toUpperCase() === this.ctx.session.verifycode.toUpperCase()) {
       const result = await this.ctx.model.Admin.find({
         username,
         password,

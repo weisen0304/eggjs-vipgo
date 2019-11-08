@@ -4,16 +4,21 @@
  * @Github: https://github.com/weisen0304
  */
 'use strict';
-
-const Controller = require('egg').Controller;
 const BaseController = require('./base');
 class RoleController extends BaseController {
   // 角色列表
   async list() {
     const result = await this.ctx.model.Role.find({});
-    await this.ctx.render('admin/role/list', {
-      list: result,
-    });
+    // console.log(result);
+    // // const data = await this.ctx.render('admin/role/list', {
+    // //   list: result,
+    // // });
+    // console.log(this.ctx.response);
+    // this.ctx.body = result;
+
+    const { ctx } = this;
+
+    ctx.body = result;
   }
   async add() {
     await this.ctx.render('admin/role/add');

@@ -1,7 +1,7 @@
 {
-  "name": "shop",
+  "name": "vipgo-shop",
   "version": "1.0.0",
-  "description": "",
+  "description": "鲸灵前端 - 基于eggjs框架的电商优惠券后台",
   "private": true,
   "dependencies": {
     "egg": "^2.2.1",

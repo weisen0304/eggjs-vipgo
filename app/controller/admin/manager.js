@@ -1,5 +1,9 @@
+/*
+ * @Author: Weisen
+ * @Date: 2019-09-29 09:49:12
+ * @Github: https://github.com/weisen0304
+ */
 'use strict';
-const Controller = require('egg').Controller;
 const BaseController = require('./base');
 
 class ManagerController extends BaseController {

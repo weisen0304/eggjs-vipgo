@@ -24,7 +24,6 @@ class BaseController extends Controller {
   async delete() {
     const id = this.ctx.query.id;
     const model = this.ctx.query.model;
-    console.log(id, model);
     await this.ctx.model[model].deleteOne({ _id: id });
     this.messageNotify(0, '删除成功');
   }

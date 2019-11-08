@@ -4,8 +4,6 @@
  * @Github: https://github.com/weisen0304
  */
 'use strict';
-
-const Controller = require('egg').Controller;
 const BaseController = require('./base');
 
 class AccessController extends BaseController {
@@ -44,7 +42,7 @@ class AccessController extends BaseController {
     const postData = this.ctx.request.body;
     const module_id = postData.module_id;
     // 如果当前不是模块则需要转换module_id的类型为ObjectId
-    if (module_id != 0) {
+    if (module_id !== 0) {
       postData.module_id = this.app.mongoose.Types.ObjectId(module_id);
     }
     const result = new this.ctx.model.Access(postData);
