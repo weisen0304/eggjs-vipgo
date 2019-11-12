@@ -5,6 +5,8 @@
  */
 'use strict';
 
+const path = require('path');
+
 module.exports = appInfo => {
   const config = (exports = {});
   // use for cookie sign key, should change to your own and keep security
@@ -22,13 +24,29 @@ module.exports = appInfo => {
   // 自定义中间件
   config.middleware = [ 'adminauth' ];
   config.adminauth = {
-    match: '/admin',
+    match: [ '/admin', '/coupon' ],
   };
 
   config.mongoose = {
     client: {
       url: 'mongodb://127.0.0.1/shop',
       options: {},
+    },
+  };
+
+  // 设置静态文件
+  // config.static = {
+  //   prefix: '/public/',
+  //   dir: path.join(appInfo.baseDir, 'app/public/'),
+  // };
+
+  // 端口地址
+  config.cluster = {
+    listen: {
+      path: '',
+      port: 7001,
+      hostname: '0.0.0.0',
+      myPath: 'http://localhost:7001',
     },
   };
 

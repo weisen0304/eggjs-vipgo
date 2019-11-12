@@ -3,6 +3,8 @@
  * @Date: 2019-09-29 09:49:12
  * @Github: https://github.com/weisen0304
  */
+'use strict';
+/* eslint-disable */
 $(function() {
   // 添加管理员
   $('#form-admin-add').validate({

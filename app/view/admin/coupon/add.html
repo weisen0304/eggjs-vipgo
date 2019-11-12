@@ -1,66 +1,41 @@
+<!--
+ * @Author: Weisen
+ * @Date: 2019-11-08 15:42:19
+ * @Github: https://github.com/weisen0304
+ -->
 <%- include ../public/_meta.html %>
 
 <section class="Hui-admin-article-wrapper">
 	<article class="clearfix pd-20">
-		<form action="" method="post" class="form form-horizontal" id="form-access-add">
+		<form action="" method="post" class="form form-horizontal" id="form-coupon-add">
 			<input type="hidden" name="_csrf" value="<%=csrf%>" />
 			<div class="row clearfix">
-				<label class="form-label col-xs-2 col-sm-3"><span class="c-red">*</span>模块名称</label>
-				<div class="form-controls col-xs-10 col-sm-9">
-					<input type="text" class="input-text" value="" placeholder="" id="module_name" name="module_name">
+				<label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>优惠券描述</label>
+				<div class="form-controls col-xs-7 col-sm-9">
+					<input type="text" class="input-text" value="" placeholder="" id="art_name" name="art_name">
 				</div>
 			</div>
 			<div class="row clearfix">
-				<label class="form-label col-xs-2 col-sm-3">节点类型</label>
-				<div class="form-controls col-xs-10 col-sm-9">
-					<span class="select-box" style="width:250px;">
-						<select class="select" name="type" size="1">
-							<option value="1">模块</option>
-							<option value="2">菜单</option>
-							<option value="3">操作</option>
-						</select>
+				<label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>优惠券图片</label>
+				<div class="form-controls col-xs-7 col-sm-9">
+					<span class="btn-upload form-group">
+						<img width="60" src="http://img1.imgtn.bdimg.com/it/u=4243152510,3375696239&fm=26&gp=0.jpg" alt="" />
+						<input id="upload-file" type="file" class="input-file"/>
+						<input id="file" type="text" class="input-file" style="display: none;" value="" name="image"/>
 					</span>
+					<a id="upload-btn" class="btn btn-primary radius btn-upload"><i class="Hui-iconfont">&#xe642;</i> 点击上传</a>
 				</div>
 			</div>
 			<div class="row clearfix">
-				<label class="form-label col-xs-2 col-sm-3">操作名称</label>
-				<div class="form-controls col-xs-10 col-sm-9">
-					<input type="text" class="input-text" value="" placeholder="" id="action_name" name="action_name">
+				<label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>价格</label>
+				<div class="form-controls col-xs-7 col-sm-9">
+					<input type="text" class="input-text" value="" placeholder="" id="art_name" name="price">
 				</div>
 			</div>
 			<div class="row clearfix">
-				<label class="form-label col-xs-2 col-sm-3">操作地址</label>
-				<div class="form-controls col-xs-10 col-sm-9">
-					<input type="text" class="input-text"  name="url" id="url">
-				</div>
-			</div>
-
-
-
-			<div class="row clearfix">
-				<label class="form-label col-xs-2 col-sm-3">所属模块</label>
-				<div class="form-controls col-xs-10 col-sm-9">
-					<span class="select-box" style="width:250px;">
-						<select class="select" name="module_id" size="1">
-								<option value="0">--顶级模块--</option>
-								<%for(var i=0; i<moduleList.length;i++){%>
-									<option value="<%=moduleList[i]._id%>"><%=moduleList[i].module_name%></option>
-								<%}%>
-						</select>
-					</span>
-				</div>
-			</div>
-			<div class="row clearfix">
-					<label class="form-label col-xs-2 col-sm-3">排序</label>
-					<div class="form-controls col-xs-10 col-sm-9">
-						<input type="text" class="input-text" value="1"  name="sort" id="sort">
-					</div>
-				</div>
-
-			<div class="row clearfix">
-				<label class="form-label col-xs-2 col-sm-3">备注：</label>
-				<div class="form-controls col-xs-10 col-sm-9">
-					<textarea name="description" cols="" rows="" class="textarea" placeholder="说点什么...100个字符以内" ></textarea>
+				<label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>优惠价</label>
+				<div class="form-controls col-xs-7 col-sm-9">
+					<input type="text" class="input-text" value="" placeholder="" id="art_name" name="final_price">
 				</div>
 			</div>
 			<div class="row clearfix">
@@ -80,7 +55,8 @@
 <script type="text/javascript" src="/public/admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
 <script type="text/javascript" src="/public/admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
 <script type="text/javascript" src="/public/admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>
-<script type="text/javascript" src="/public/admin/module/access.js"></script>
+<script type="text/javascript" src="/public/admin/lib/layer/3.1.1/layer.js"></script>
+<script type="text/javascript" src="/public/admin/module/coupon.js"></script>
 <!--/请在上方写此页面业务相关的脚本-->
 </body>
 

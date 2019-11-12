@@ -4,6 +4,7 @@
  * @Github: https://github.com/weisen0304
  */
 'use strict';
+/* eslint-disable */
 $(function() {
   // 添加管理员
   $('#form-access-add').validate({
@@ -47,7 +48,6 @@ $(function() {
     focusCleanup: true,
     success: 'valid',
     submitHandler(form) {
-      console.log($('#form-access-edit').serialize());
       $.ajax({
         url: '/admin/access/doEdit',
         type: 'post',

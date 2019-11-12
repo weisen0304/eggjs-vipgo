@@ -77,6 +77,15 @@ function coupon_del(obj, id, model) {
     });
   });
 }
+/*优惠券-添加*/
+function coupon_add(title, url) {
+  var index = layer.open({
+    type: 2,
+    title: title,
+    content: url,
+    area: ["600px", "550px"]
+  });
+}
 
 /*-------------------资讯管理-------------------------*/
 

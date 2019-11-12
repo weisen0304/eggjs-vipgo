@@ -9,16 +9,9 @@ class RoleController extends BaseController {
   // 角色列表
   async list() {
     const result = await this.ctx.model.Role.find({});
-    // console.log(result);
-    // // const data = await this.ctx.render('admin/role/list', {
-    // //   list: result,
-    // // });
-    // console.log(this.ctx.response);
-    // this.ctx.body = result;
-
-    const { ctx } = this;
-
-    ctx.body = result;
+    await this.ctx.render('admin/role/list', {
+      list: result,
+    });
   }
   async add() {
     await this.ctx.render('admin/role/add');

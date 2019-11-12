@@ -36,7 +36,6 @@ module.exports = app => {
   router.post('/admin/role/doEdit', controller.admin.role.doEdit);
   router.get('/admin/role/auth', controller.admin.role.auth);
   router.post('/admin/role/doAuth', controller.admin.role.doAuth);
-  router.get('/admin/role/list', controller.admin.role.list);
 
   // 权限路由
   router.get('/admin/access', controller.admin.access.list);
@@ -52,6 +51,11 @@ module.exports = app => {
 
   // 优惠券路由
   router.get('/coupon/manager', controller.coupon.manager.list);
+  router.get('/coupon/manager/add', controller.coupon.manager.add);
+  router.post('/coupon/manager/doAdd', controller.coupon.manager.doAdd);
+
+  // 上传文件
+  router.post('/admin/upload', controller.upload.upload);
 
   // 优惠券路由
   router.get('/api/v1/coupons', controller.coupon.manager.get);

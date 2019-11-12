@@ -16,7 +16,7 @@
 				<div class="panel-body">
 					<div class="clearfix">
 						<span class="f-l">
-							<a href="javascript:;" onclick="admin_permission_add('添加权限','/admin/access/add')" class="btn btn-primary radius"><i
+							<a href="javascript:;" onclick="coupon_add('添加优惠券','/coupon/manager/add')" class="btn btn-primary radius"><i
 								 class="Hui-iconfont">&#xe600;</i>
 								添加</a>
 						</span>
@@ -28,8 +28,10 @@
 									<th scope="col" colspan="9">优惠券列表</th>
 								</tr>
 								<tr class="text-c">
+									<th width="80">id</th>
 									<th width="80">图片</th>
-									<th width="250">优惠券名称</th>
+									<th width="250">优惠券描述</th>
+									<th width="80">价格</th>
 									<th width="155">操作</th>
 								</tr>
 							</thead>
@@ -37,10 +39,20 @@
 								<%for(var i=0; i<list.length;i++){%>
 								<tr class="text-c">
 									<td>
-											<img width="80" src="<%=list[i].image%>" />
+											<span><%=list[i].product_id%></span>
 									</td>
 									<td>
-											<span><%=list[i].art_name%></span>
+										<img width="80" src="<%=list[i].image%>" />
+									</td>
+									<td>
+										<span><%=list[i].art_name%></span>
+									</td>
+									<td>
+										<%if(list[i].price) {%>
+										<span> 价格：$<%=list[i].price%> 优惠券价格：$<%=list[i].final_price%></span>
+										<%} else {%>
+										<span>-</span>
+										<%}%>
 									</td>
 									<td class="text-l f-14"><a title="编辑" class="btn btn-primary radius" href="javascript:;" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i> 编辑</a>
 									<a title="删除" href="javascript:;" onclick="coupon_del(this,'<%=list[i]._id%>','Coupon')" class="btn btn-danger radius ml-5"
